@@ -125,8 +125,32 @@ PRODUCT_COPY_FILES += \
     device/samsung/tass/prebuilt/sec_key.kl:system/usr/keylayout/sec_key.kl \
     device/samsung/tass/prebuilt/sec_key.kcm.bin:system/usr/keychars/sec_key.kcm.bin
 
+## Tweaks
+PRODUCT_COPY_FILES += \
+    device/samsung/tass/prebuilt/70zipalign:system/etc/init.d/70zipalign \
+    device/samsung/tass/prebuilt/zipalign:system/bin/zipalign \
+    device/samsung/tass/prebuilt/be_photo:system/etc/be_photo \
+    device/samsung/tass/prebuilt/be_movie:system/etc/be_movie
+
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
+
+## Tweaks
+## PRODUCT_COPY_FILES += \
+##     device/samsung/tass/prebuilt/30mountcache:system/etc/init.d/30mountcache \
+##     device/samsung/tass/prebuilt/internets:system/bin/internets \
+##     device/samsung/tass/prebuilt/09Mixer:system/etc/init.d/09Mixer \
+##     device/samsung/tass/prebuilt/tweaksos:system/bin/tweaksos \
+##     device/samsung/tass/prebuilt/97swap2sd:system/etc/init.d/97swap2sd \
+##     device/samsung/tass/prebuilt/98swapmarker:system/etc/init.d/98swapmarker \
+##     device/samsung/tass/prebuilt/sdcardtune:system/bin/sdcardtune \
+##     device/samsung/tass/prebuilt/swapper:system/bin/swapper \
+##     device/samsung/tass/prebuilt/be_photo:system/etc/be_photo \
+##     device/samsung/tass/prebuilt/be_movie:system/etc/be_movie \
+##     device/samsung/tass/app/MinimalMagic.apk:system/app/MinimalMagic.apk \
+##    device/samsung/tass/app/Memo.apk:system/app/Memo.apk \
+##    device/samsung/tass/app/ToCa.apk:system/app/ToCa.apk \
+##    device/samsung/tass/app/TaskManager.apk:system/app/TaskManager.apk
 
 $(call inherit-product-if-exists, vendor/samsung/tass/tass-vendor.mk)
 

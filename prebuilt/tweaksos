@@ -1,0 +1,27 @@
+#!/system/bin/sh
+
+# sysctl tweaks by squadzone
+# DO NOT CHANGE
+
+if [ -e /data/property/persist.sys.sysctl ]
+        then
+	sys=`cat /data/property/persist.sys.sysctl`
+	if [ "$sys" = "1" ]; then
+		sysctl -w vm.min_free_kbytes=4096
+		sysctl -w vm.dirty_ratio=90
+		sysctl -w vm.dirty_background_ratio=70
+		sysctl -w vm.vfs_cache_pressure=50
+		sysctl -w vm.oom_kill_allocating_task=1
+		sysctl -w vm.panic_on_oom=0
+		sysctl -w vm.laptop_mode=0
+	fi
+fi
+
+if [ -e /data/property/persist.sys.ioscheduler ]
+  then
+       ios=`cat /data/property/persist.sys.ioscheduler`
+       echo $ios > /sys/block/mmcblk0/queue/scheduler
+       echo $ios > /sys/block/stl14/queue/scheduler
+       echo $ios > /sys/block/stl13/queue/scheduler
+       echo $ios > /sys/block/stl12/queue/scheduler
+fi
